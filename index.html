@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PasarKita - Marketplace jual beli barang sederhana">
+    <title>PasarKita - Marketplace</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container navbar">
+
+            <a href="#" class="logo" id="logoLink">
+                <span class="logo-icon">P</span>
+                <span>Pasar<span>Kita</span></span>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="#home">Beranda</a>
+                <a href="#categories">Kategori</a>
+                <a href="#" id="sellNavBtn">Jual Barang</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button class="icon-btn theme-btn" id="themeBtn" title="Dark Mode">
+                    ☾
+                </button>
+
+                <button class="cart-btn" id="cartBtn">
+                    🛒
+                    <span>Keranjang</span>
+                    <b id="cartCount">0</b>
+                </button>
+
+                <button class="menu-btn" id="menuBtn">
+                    ☰
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Beranda</a>
+            <a href="#categories">Kategori</a>
+            <a href="#" id="mobileSellBtn">Jual Barang</a>
+            <a href="#" id="mobileCartBtn">Keranjang</a>
+        </div>
+    </header>
+
+
+    <main id="home">
+
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="hero-text">
+                    <span class="hero-badge">Marketplace Lokal Indonesia</span>
+
+                    <h1>
+                        Temukan Barang
+                        <span>Impianmu</span>
+                    </h1>
+
+                    <p>
+                        Cari, beli, dan jual berbagai macam barang
+                        dengan mudah melalui PasarKita.
+                    </p>
+
+                    <button class="primary-btn hero-btn" id="heroSellBtn">
+                        + Jual Barang
+                    </button>
+                </div>
+
+                <div class="hero-illustration">
+                    <div class="hero-circle"></div>
+                    <div class="hero-card card-one">📱</div>
+                    <div class="hero-card card-two">👟</div>
+                    <div class="hero-card card-three">💻</div>
+                    <div class="hero-main-icon">🛍️</div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+        <section class="search-section">
+            <div class="container">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Cari barang, misalnya Laptop, Sepatu..."
+                        autocomplete="off"
+                    >
+
+                    <button id="clearSearch" class="clear-search">
+                        ×
+                    </button>
+
+                    <button class="search-btn" id="searchBtn">
+                        Cari
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= CATEGORIES ================= -->
+        <section class="categories-section" id="categories">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">Jelajahi</span>
+                        <h2>Kategori</h2>
+                    </div>
+                </div>
+
+                <div class="category-list" id="categoryList">
+
+                    <button class="category-item active" data-category="Semua">
+                        <span>🏪</span>
+                        <strong>Semua</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Elektronik">
+                        <span>💻</span>
+                        <strong>Elektronik</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Fashion">
+                        <span>👕</span>
+                        <strong>Fashion</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Rumah Tangga">
+                        <span>🏠</span>
+                        <strong>Rumah Tangga</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Kendaraan">
+                        <span>🚗</span>
+                        <strong>Kendaraan</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Olahraga">
+                        <span>⚽</span>
+                        <strong>Olahraga</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Buku">
+                        <span>📚</span>
+                        <strong>Buku</strong>
+                    </button>
+
+                    <button class="category-item" data-category="Lainnya">
+                        <span>📦</span>
+                        <strong>Lainnya</strong>
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= PRODUCTS ================= -->
+        <section class="products-section">
+            <div class="container">
+
+                <div class="products-header">
+
+                    <div>
+                        <span class="section-label">Marketplace</span>
+                        <h2>Produk Pilihan</h2>
+                        <p id="productResultText">
+                            Menampilkan semua produk
+                        </p>
+                    </div>
+
+                    <div class="sort-wrapper">
+                        <label for="sortSelect">Urutkan:</label>
+
+                        <select id="sortSelect">
+                            <option value="newest">Terbaru</option>
+                            <option value="low">Harga Terendah</option>
+                            <option value="high">Harga Tertinggi</option>
+                            <option value="rating">Rating Tertinggi</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <!-- Produk dihasilkan JavaScript -->
+                </div>
+
+                <div class="empty-state hidden" id="emptyState">
+                    <div class="empty-icon">🔍</div>
+                    <h3>Produk tidak ditemukan</h3>
+                    <p>
+                        Coba gunakan kata pencarian atau kategori yang berbeda.
+                    </p>
+                    <button class="secondary-btn" id="resetSearchBtn">
+                        Reset Pencarian
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-icon">P</span>
+                    <span>Pasar<span>Kita</span></span>
+                </a>
+
+                <p>
+                    Marketplace sederhana untuk jual beli
+                    barang dengan mudah dan nyaman.
+                </p>
+            </div>
+
+            <div>
+                <h4>PasarKita</h4>
+                <a href="#home">Beranda</a>
+                <a href="#categories">Kategori</a>
+                <a href="#" id="footerSellBtn">Jual Barang</a>
+            </div>
+
+            <div>
+                <h4>Bantuan</h4>
+                <a href="#">Pusat Bantuan</a>
+                <a href="#">Cara Belanja</a>
+                <a href="#">Cara Menjual</a>
+            </div>
+
+            <div>
+                <h4>Informasi</h4>
+                <a href="#">Tentang Kami</a>
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat & Ketentuan</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                © <span id="currentYear"></span> PasarKita. Semua hak dilindungi.
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- ================= PRODUCT DETAIL MODAL ================= -->
+    <div class="modal-overlay" id="productModal">
+
+        <div class="modal product-detail-modal">
+
+            <button class="modal-close" data-close="productModal">
+                ×
+            </button>
+
+            <div id="productDetailContent">
+                <!-- Detail produk -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ADD PRODUCT MODAL ================= -->
+    <div class="modal-overlay" id="addProductModal">
+
+        <div class="modal">
+
+            <button class="modal-close" data-close="addProductModal">
+                ×
+            </button>
+
+            <div class="modal-header">
+                <span class="section-label">Jual Barang</span>
+                <h2>Tambahkan Produk</h2>
+                <p>Isi informasi barang yang ingin Anda jual.</p>
+            </div>
+
+            <form id="productForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label for="productName">
+                            Nama Barang *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            required
+                            maxlength="100"
+                            placeholder="Contoh: Laptop ASUS"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productPrice">
+                            Harga *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productPrice"
+                            min="1"
+                            required
+                            placeholder="7500000"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productStock">
+                            Stok *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            min="1"
+                            required
+                            placeholder="1"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productCategory">
+                            Kategori *
+                        </label>
+
+                        <select id="productCategory" required>
+                            <option value="">Pilih kategori</option>
+                            <option value="Elektronik">Elektronik</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Rumah Tangga">Rumah Tangga</option>
+                            <option value="Kendaraan">Kendaraan</option>
+                            <option value="Olahraga">Olahraga</option>
+                            <option value="Buku">Buku</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productCondition">
+                            Kondisi *
+                        </label>
+
+                        <select id="productCondition" required>
+                            <option value="">Pilih kondisi</option>
+                            <option value="Baru">Baru</option>
+                            <option value="Bekas">Bekas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="productLocation">
+                            Lokasi *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productLocation"
+                            required
+                            maxlength="100"
+                            placeholder="Contoh: Jakarta"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="productImage">
+                            URL Gambar
+                        </label>
+
+                        <input
+                            type="url"
+                            id="productImage"
+                            placeholder="https://example.com/gambar.jpg"
+                        >
+
+                        <small>
+                            Kosongkan jika tidak memiliki URL gambar.
+                        </small>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="productDescription">
+                            Deskripsi *
+                        </label>
+
+                        <textarea
+                            id="productDescription"
+                            rows="5"
+                            required
+                            maxlength="1000"
+                            placeholder="Jelaskan kondisi dan informasi barang..."
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        data-close="addProductModal"
+                    >
+                        Batal
+                    </button>
+
+                    <button type="submit" class="primary-btn">
+                        Simpan Barang
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CART SIDEBAR ================= -->
+    <div class="sidebar-overlay" id="cartOverlay"></div>
+
+    <aside class="cart-sidebar" id="cartSidebar">
+
+        <div class="cart-header">
+
+            <div>
+                <span class="section-label">Keranjang</span>
+                <h2>Keranjang Belanja</h2>
+            </div>
+
+            <button class="modal-close" id="closeCart">
+                ×
+            </button>
+
+        </div>
+
+        <div class="cart-body" id="cartItems">
+            <!-- Keranjang -->
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="price-row">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">Rp0</strong>
+            </div>
+
+            <div class="price-row">
+                <span>Ongkos Kirim</span>
+                <strong id="shippingCost">Rp0</strong>
+            </div>
+
+            <div class="total-row">
+                <span>Total</span>
+                <strong id="cartTotal">Rp0</strong>
+            </div>
+
+            <button class="primary-btn checkout-btn" id="checkoutBtn">
+                Checkout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CHECKOUT MODAL ================= -->
+    <div class="modal-overlay" id="checkoutModal">
+
+        <div class="modal">
+
+            <button class="modal-close" data-close="checkoutModal">
+                ×
+            </button>
+
+            <div class="modal-header">
+                <span class="section-label">Checkout</span>
+                <h2>Data Pengiriman</h2>
+                <p>Lengkapi informasi untuk membuat pesanan.</p>
+            </div>
+
+            <form id="checkoutForm">
+
+                <div class="form-group">
+                    <label for="customerName">
+                        Nama Lengkap *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required
+                        maxlength="100"
+                        placeholder="Nama lengkap"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">
+                        Nomor HP *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        required
+                        maxlength="20"
+                        placeholder="08xxxxxxxxxx"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="customerAddress">
+                        Alamat *
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        required
+                        rows="3"
+                        placeholder="Alamat lengkap"
+                    ></textarea>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="customerCity">
+                            Kota *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerCity"
+                            required
+                            placeholder="Jakarta"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerPostal">
+                            Kode Pos *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerPostal"
+                            required
+                            maxlength="10"
+                            placeholder="12345"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="paymentMethod">
+                        Metode Pembayaran *
+                    </label>
+
+                    <select id="paymentMethod" required>
+                        <option value="">Pilih pembayaran</option>
+                        <option value="COD">COD</option>
+                        <option value="Transfer Bank">Transfer Bank</option>
+                        <option value="E-Wallet">E-Wallet</option>
+                    </select>
+
+                </div>
+
+                <div class="checkout-summary">
+                    <span>Total pembayaran</span>
+                    <strong id="checkoutTotal">Rp0</strong>
+                </div>
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        data-close="checkoutModal"
+                    >
+                        Batal
+                    </button>
+
+                    <button type="submit" class="primary-btn">
+                        Buat Pesanan
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SUCCESS MODAL ================= -->
+    <div class="modal-overlay" id="successModal">
+
+        <div class="modal success-modal">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>Pesanan Berhasil!</h2>
+
+            <p>
+                Pesanan Anda berhasil dibuat.
+            </p>
+
+            <div class="order-detail" id="orderDetail">
+                <!-- Detail pesanan -->
+            </div>
+
+            <button
+                class="primary-btn"
+                id="successCloseBtn"
+            >
+                Selesai
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+    <div class="toast" id="toast">
+        <span id="toastIcon">✓</span>
+        <span id="toastMessage">Berhasil</span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
